@@ -33,13 +33,9 @@ const signup = (details: {email: string, name: string, password: string}) => asy
   try {
     dispatch(setLoading(true));
     const response = await post(API_CONSTANT.register, details);
-    if (response.status == 200) {
-      if (response.success) {
-        dispatch(saveUserData(response));
-      } else {
-        console.info(response.message);
-        dispatch(hasError(new Error(response?.message)));
-      }
+    // post() returns the response body; on success the API sends back the created user
+    if (response?.id) {
+      dispatch(saveUserData(response));
     } else {
       console.info(response?.message);
       dispatch(hasError(new Error(response?.message)));
