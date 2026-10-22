@@ -17,7 +17,7 @@
 To create a new project using the boilerplate, run the following command:
 
 ```bash
-npx rn-react-native-boilerplate
+npx @hardik59/rn-boilerplate
 ```
 
 This will launch an interactive setup wizard that will guide you through the following steps:

@@ -1,13 +1,19 @@
 {
-  "name": "rn-react-native-boilerplate",
-  "version": "1.4.5",
+  "name": "@hardik59/rn-boilerplate",
+  "version": "1.0.0",
   "description": "A React Native boilerplate for building cross-platform mobile apps.",
   "bin": {
-    "rn-react-native-boilerplate": "run.sh"
+    "rn-boilerplate": "run.sh"
   },
+  "files": [
+    "run.sh",
+    "setup.js",
+    "template.config.js",
+    "template"
+  ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sharmahdk13s/RNBoilerPlate.git"
+    "url": "git+https://github.com/sharmahardik59/RNBoilerplate.git"
   },
   "keywords": [
     "react-native",
@@ -26,15 +32,17 @@
     "hybrid",
     "android",
     "iOS",
-    "mobile application",
-    "thecodingmachine"
+    "mobile application"
   ],
   "author": "Hardik Sharma",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
-    "url": "https://github.com/sharmahdk13s/RNBoilerPlate/issues"
+    "url": "https://github.com/sharmahardik59/RNBoilerplate/issues"
   },
-  "homepage": "https://github.com/sharmahdk13s/RNBoilerPlate#readme",
+  "homepage": "https://github.com/sharmahardik59/RNBoilerplate#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "kleur": "^4.1.5",
     "prompts": "^2.4.2",

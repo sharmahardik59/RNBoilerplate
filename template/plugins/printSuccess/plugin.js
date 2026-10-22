@@ -21,7 +21,7 @@ module.exports = {
         "- 📚 If you need to read more about this boilerplate : https://thecodingmachine.github.io/react-native-boilerplate/"
       );
       console.log(
-        "- ⭐ If you love this boilerplate, give us a star, you will be a ray of sunshine in our lives :) https://github.com/sharmahdk13s/RNBoilerPlate"
+        "- ⭐ If you love this boilerplate, give us a star, you will be a ray of sunshine in our lives :) https://github.com/sharmahardik59/RNBoilerplate"
       );
 
       if (previousValues.typescript) {
