@@ -1,9 +1,9 @@
 {
-  "name": "@hardik59/rn-boilerplate",
-  "version": "1.0.1",
+  "name": "new-react-native-boilerplate",
+  "version": "1.0.0",
   "description": "A React Native boilerplate for building cross-platform mobile apps.",
   "bin": {
-    "rn-boilerplate": "run.sh"
+    "new-react-native-boilerplate": "run.sh"
   },
   "files": [
     "run.sh",

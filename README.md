@@ -1,8 +1,8 @@
 # RNBoilerPlate: React Native App QuickStart
 
-[![npm version](https://img.shields.io/npm/v/@hardik59/rn-boilerplate.svg)](https://www.npmjs.com/package/@hardik59/rn-boilerplate)
-[![npm downloads](https://img.shields.io/npm/dm/@hardik59/rn-boilerplate.svg)](https://www.npmjs.com/package/@hardik59/rn-boilerplate)
-[![license](https://img.shields.io/npm/l/@hardik59/rn-boilerplate.svg)](https://github.com/sharmahardik59/RNBoilerplate/blob/main/LICENSE)
+[![npm version](https://img.shields.io/npm/v/new-react-native-boilerplate.svg)](https://www.npmjs.com/package/new-react-native-boilerplate)
+[![npm downloads](https://img.shields.io/npm/dm/new-react-native-boilerplate.svg)](https://www.npmjs.com/package/new-react-native-boilerplate)
+[![license](https://img.shields.io/npm/l/new-react-native-boilerplate.svg)](https://github.com/sharmahardik59/RNBoilerplate/blob/main/LICENSE)
 ![React Native](https://img.shields.io/badge/React%20Native-0.88-61dafb)
 ![TypeScript](https://img.shields.io/badge/TypeScript-ready-3178c6)
 
@@ -64,7 +64,7 @@
 Create a new project with one command:
 
 ```bash
-npx @hardik59/rn-boilerplate
+npx new-react-native-boilerplate
 ```
 
 The interactive wizard asks for two things:
