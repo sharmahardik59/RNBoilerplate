@@ -1,5 +1,6 @@
 import storageKeys from "@constants/storageKeys";
-import { UnistylesRuntime, UnistylesThemes } from "react-native-unistyles";
+import type { UnistylesThemes } from "react-native-unistyles";
+import { UnistylesRuntime } from "react-native-unistyles";
 import { setItem } from "src/services/apiService";
 
 const changeTheme = (mode: keyof UnistylesThemes) => {

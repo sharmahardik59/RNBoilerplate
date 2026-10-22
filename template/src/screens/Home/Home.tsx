@@ -3,10 +3,12 @@ import EmptyComp from '@components/molecules/EmptyComp';
 import HomeHeader from '@components/molecules/HomeHeader';
 import HomeListHeader from '@components/molecules/HomeListHeader';
 import HomeListItems from '@components/molecules/HomeListItems';
-import ModalSheet, {ModalSheetRef} from '@components/molecules/ModalSheet';
+import type {ModalSheetRef} from '@components/molecules/ModalSheet';
+import ModalSheet from '@components/molecules/ModalSheet';
 import constants from '@constants/index';
-import {HomeStackParamList} from '@navigations/MainStack';
-import {NavigationProp, useNavigation} from '@react-navigation/native';
+import type {HomeStackParamList} from '@navigations/MainStack';
+import type {NavigationProp} from '@react-navigation/native';
+import { useNavigation} from '@react-navigation/native';
 import {useDispatch, useSelector} from '@redux/hooks';
 import {moderateScale} from '@utils/scaling';
 import React, {useCallback, useEffect, useRef} from 'react';
@@ -37,21 +39,21 @@ const Home = (): React.JSX.Element => {
   // Effects
   useEffect(() => {
     dispatch(getProduct(constants.DATA_LIMIT));
-  }, []);
+  }, [dispatch]);
 
   // Renders
   return (
     <WrapperContainer>
       <View style={{marginHorizontal: moderateScale(20)}}>
-        <HomeHeader title="BLOGS_POT" onPress={handleToggleSheet} />
+        <HomeHeader onPress={handleToggleSheet} title="BLOGS_POT" />
       </View>
       <FlatList
-        ListHeaderComponent={<HomeListHeader />}
         data={productList}
-        renderItem={props => <HomeListItems {...props} navigation={navigation} />}
         ItemSeparatorComponent={ItemSeparatorComponent}
         keyExtractor={(item, index) => String(item?.id || index)}
         ListEmptyComponent={<EmptyComp isError={true} isLoading={isLoading} />}
+        ListHeaderComponent={<HomeListHeader />}
+        renderItem={props => <HomeListItems {...props} navigation={navigation} />}
       />
 
       {/* Bottom Modal Sheet */}

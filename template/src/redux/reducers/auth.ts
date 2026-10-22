@@ -1,42 +1,43 @@
-/* eslint-disable */
-import { User } from "@models/User";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
+import type { User } from "@models/User";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface AuthState {
-  userData: User;
-  isLoading: boolean;
   error: Error | null;
+  isLoading: boolean;
+  userData: User;
 }
 
 const initialState: AuthState = {
+  error: null,
+  isLoading: false,
   userData: {
-    id: 0,
-    username: "",
+    accessToken: "",
     email: "",
     firstName: "",
-    lastName: "",
     gender: "",
+    id: 0,
     image: "",
-    accessToken: "",
-    refreshToken: ""
+    lastName: "",
+    refreshToken: "",
+    username: ""
   },
-  isLoading: false,
-  error: null,
 };
 
 const authSlice = createSlice({
-  name: "auth",
   initialState,
+  name: "auth",
   reducers: {
-    saveUserData: (state, action: PayloadAction<User>) => {
-      state.userData = action.payload;
-    },
     hasError: (state, action: PayloadAction<Error>) => {
       state.error = action.payload;
+    },
+    saveUserData: (state, action: PayloadAction<User>) => {
+      state.userData = action.payload;
     },
   },
 });
 
-export const { saveUserData, hasError } = authSlice.actions;
+export const { hasError, saveUserData } = authSlice.actions;
 
 export default authSlice.reducer;

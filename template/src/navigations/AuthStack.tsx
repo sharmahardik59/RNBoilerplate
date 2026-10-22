@@ -4,16 +4,16 @@ import * as Screens from '../screens';
 
 export type AuthStackParamList = {
   Login: undefined;
-  Signup: undefined;
   Onboarding: undefined;
+  Signup: undefined;
 };
 
 export const Stack = createNativeStackNavigator<AuthStackParamList>();
 const AuthStack = () => (
   <>
-    <Stack.Screen name="Onboarding" component={Screens.Onboarding} />
-    <Stack.Screen name="Login" component={Screens.Login} />
-    <Stack.Screen name="Signup" component={Screens.Signup} />
+    <Stack.Screen component={Screens.Onboarding} name="Onboarding" />
+    <Stack.Screen component={Screens.Login} name="Login" />
+    <Stack.Screen component={Screens.Signup} name="Signup" />
   </>
 );
 

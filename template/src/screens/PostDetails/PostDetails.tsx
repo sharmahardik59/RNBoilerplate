@@ -5,7 +5,7 @@ import Loader from '@components/molecules/Loader';
 import fontFamily from '@constants/fontFamily';
 import imagePath from '@constants/imagePath';
 import {ProductsData} from '@models/HomeData';
-import {HomeStackParamList} from '@navigations/MainStack';
+import type {HomeStackParamList} from '@navigations/MainStack';
 import type {RouteProp} from '@react-navigation/native';
 import {moderateScale, scale, width} from '@utils/scaling';
 import React, {useEffect} from 'react';
@@ -35,7 +35,7 @@ const PostDetails: React.FC<Props> = ({route}): React.JSX.Element => {
   // Effects
   useEffect(() => {
     dispatch(getProductDetails(route.params?.productId));
-  }, [route.params?.productId]);
+  }, [dispatch, route.params?.productId]);
 
   // Rendering handled
   if (isLoading) {
@@ -63,20 +63,20 @@ const PostDetails: React.FC<Props> = ({route}): React.JSX.Element => {
           <View>
             <TextContainer
               isDynamicText
-              text={productDetail?.description || ''}
               style={{
                 color: theme.colors.white,
-                fontSize: scale(24),
                 fontFamily: fontFamily.semiBold,
+                fontSize: scale(24),
               }}
+              text={productDetail?.description || ''}
             />
             <TextContainer
               isDynamicText
-              text={productDetail?.description || ''}
               style={{
                 color: theme.colors.white,
                 fontSize: scale(14),
               }}
+              text={productDetail?.description || ''}
             />
           </View>
         </ImageBackground>
@@ -91,11 +91,11 @@ const PostDetails: React.FC<Props> = ({route}): React.JSX.Element => {
 
           <View style={styles.rectangleBox}>
             <View style={{width: width / 2}}>
-              <TextContainer text="FOLLOW_US" style={styles.followUs} />
+              <TextContainer style={styles.followUs} text="FOLLOW_US" />
               <TextContainer
                 isDynamicText
-                text="Over 35k Happy Customers"
                 style={{color: theme.colors.white}}
+                text="Over 35k Happy Customers"
               />
             </View>
             <ButtonContainer
@@ -109,14 +109,14 @@ const PostDetails: React.FC<Props> = ({route}): React.JSX.Element => {
             <View style={styles.flexView}>
               <ImageContainer
                 source={imagePath.icLike}
-                style={{resizeMode: 'contain', marginRight: moderateScale(8)}}
+                style={{marginRight: moderateScale(8), resizeMode: 'contain'}}
               />
               <TextContainer isDynamicText style={{fontSize: scale(12)}} text="25.3k LIKES" />
             </View>
             <View style={{...styles.flexView, flex: 0.4}}>
               <ImageContainer
                 source={imagePath.icComment}
-                style={{resizeMode: 'contain', marginRight: moderateScale(8)}}
+                style={{marginRight: moderateScale(8), resizeMode: 'contain'}}
               />
               <TextContainer isDynamicText style={{fontSize: scale(12)}} text="2.1k COMMENTS" />
             </View>
@@ -140,8 +140,8 @@ const PostDetails: React.FC<Props> = ({route}): React.JSX.Element => {
             style={{
               ...styles.headerLine,
               backgroundColor: theme.colors.grey,
-              width: '100%',
               height: moderateScale(1),
+              width: '100%',
             }}
           />
 

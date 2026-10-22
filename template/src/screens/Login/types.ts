@@ -1,8 +1,8 @@
-import { User } from "@models/User";
+import type { User } from "@models/User";
 
 export interface LoginRequestData {
-  username: string;
   password: string;
+  username: string;
 }
 
 export default interface LoginResponse {

@@ -1,12 +1,13 @@
+/* eslint-disable no-console */
 import API_CONSTANT from "@constants/apiConstant";
 import { hasError } from "@redux/reducers/auth";
 import { setLoading } from "@redux/reducers/common";
 import { setProductDetail, setProducts } from "@redux/reducers/product";
-import { AppDispatch } from "@redux/store";
+import type { AppDispatch } from "@redux/store";
 import { get } from "./apiService";
 
 // Products get API
-const getProduct = (limit: Number) => async (dispatch: AppDispatch) => {
+const getProduct = (limit: number) => async (dispatch: AppDispatch) => {
     try {
       dispatch(setLoading(true));
       const response = await get(`${API_CONSTANT.product}?limit=${limit}`);
@@ -24,7 +25,7 @@ const getProduct = (limit: Number) => async (dispatch: AppDispatch) => {
   };
 
   // Products details get API
-const getProductDetails = (productId: Number) => async (dispatch: AppDispatch) => {
+const getProductDetails = (productId: number) => async (dispatch: AppDispatch) => {
   try {
     dispatch(setLoading(true));
     const response = await get(`${API_CONSTANT.product}/${productId}`);

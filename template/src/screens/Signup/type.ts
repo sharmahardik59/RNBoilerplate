@@ -1,8 +1,8 @@
-import { User } from "@models/User";
+import type { User } from "@models/User";
 
 export interface SignupRequestData {
-  name: string;
   email: string,
+  name: string;
   password: string;
   username: string
 }

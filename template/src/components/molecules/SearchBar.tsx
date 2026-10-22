@@ -4,34 +4,35 @@ import imagePath from "@constants/imagePath";
 import { moderateScale, scale } from "@utils/scaling";
 import type { PropsWithChildren } from "react";
 import React from "react";
-import { TextStyle, View, ViewStyle } from "react-native";
+import type { TextStyle, ViewStyle } from "react-native";
+import { View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
   container: {
-    height: moderateScale(56),
-    borderWidth: moderateScale(1.2),
+    alignItems: "center",
     borderColor: theme.colors.opacity50,
     borderRadius: moderateScale(36),
-    alignItems: "center",
+    borderWidth: moderateScale(1.2),
     flexDirection: "row",
+    height: moderateScale(56),
     paddingHorizontal: moderateScale(12),
   },
   titleStyle: {
-    fontSize: scale(14),
-    fontFamily: fontFamily.regular,
     color: theme.colors.opacity50,
+    fontFamily: fontFamily.regular,
+    fontSize: scale(14),
     marginLeft: moderateScale(16),
   },
 }));
 
 type SectionProps = PropsWithChildren<{
-  title: string;
   style?: ViewStyle;
   textStyle?: TextStyle;
+  title: string;
 }>;
 
-const SearchBar = ({ title, style, textStyle }: SectionProps): React.JSX.Element => {
+const SearchBar = ({ style, textStyle, title }: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
 
   return (

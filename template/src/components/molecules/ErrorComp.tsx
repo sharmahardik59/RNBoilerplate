@@ -5,9 +5,9 @@ import {createStyleSheet, useStyles} from 'react-native-unistyles';
 
 const stylesheet = createStyleSheet(() => ({
   container: {
+    alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center',
   },
 }));
 

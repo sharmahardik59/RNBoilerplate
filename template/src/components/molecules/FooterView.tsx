@@ -2,29 +2,30 @@ import {TextContainer} from '@components/atoms';
 import fontFamily from '@constants/fontFamily';
 import {moderateScale} from '@utils/scaling';
 import React from 'react';
-import {GestureResponderEvent, View} from 'react-native';
+import type {GestureResponderEvent} from 'react-native';
+import { View} from 'react-native';
 import {createStyleSheet, useStyles} from 'react-native-unistyles';
 
 const stylesheet = createStyleSheet(() => ({
   bottomView: {
-    flexDirection: 'row',
     alignItems: 'center',
     alignSelf: 'center',
+    flexDirection: 'row',
   },
   text: {
-    marginLeft: moderateScale(4),
     fontFamily: fontFamily.semiBold,
+    marginLeft: moderateScale(4),
   },
 }));
 
 const FooterView = ({
-  simpleText,
-  linkText,
   linkPress,
+  linkText,
+  simpleText,
 }: {
-  simpleText: string;
-  linkText: string;
   linkPress: ((event: GestureResponderEvent) => void) | undefined;
+  linkText: string;
+  simpleText: string;
 }): React.JSX.Element => {
   // Stylesheet declaration
   const {styles} = useStyles(stylesheet);
@@ -32,7 +33,7 @@ const FooterView = ({
   return (
     <View style={styles.bottomView}>
       <TextContainer text={simpleText} />
-      <TextContainer onPress={linkPress} text={linkText} style={styles.text} />
+      <TextContainer onPress={linkPress} style={styles.text} text={linkText} />
     </View>
   );
 };

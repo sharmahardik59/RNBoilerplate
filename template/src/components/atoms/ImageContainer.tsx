@@ -1,5 +1,6 @@
 import React from "react";
-import { ImageProps, Image as RNImage } from "react-native";
+import type { ImageProps} from "react-native";
+import { Image as RNImage } from "react-native";
 import { useStyles } from "react-native-unistyles";
 
 const ImageContainer: React.FC<ImageProps> = ({ ...rest }) => {

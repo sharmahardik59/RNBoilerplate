@@ -12,7 +12,7 @@ describe('CustomTextInput', () => {
   test('handles text change', () => {
     const onChangeTextMock = jest.fn();
     const {getByPlaceholderText} = render(
-      <CustomTextInput placeholder="Enter Text" onChangeText={onChangeTextMock} />,
+      <CustomTextInput onChangeText={onChangeTextMock} placeholder="Enter Text" />,
     );
     const input = getByPlaceholderText('Enter Text');
     fireEvent.changeText(input, 'Test Input');

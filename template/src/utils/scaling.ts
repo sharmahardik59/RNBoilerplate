@@ -1,6 +1,6 @@
 import { UnistylesRuntime } from "react-native-unistyles";
 
-export const { width, height } = UnistylesRuntime.screen;
+export const { height, width } = UnistylesRuntime.screen;
 
 // Guideline sizes are based on standard ~5" screen mobile device
 const guidelineBaseWidth = 350;

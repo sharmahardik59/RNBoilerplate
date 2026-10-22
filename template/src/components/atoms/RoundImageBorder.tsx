@@ -1,18 +1,19 @@
 import { moderateScale } from "@utils/scaling";
 import React from "react";
-import { ImageProps, Image as RNImage, View } from "react-native";
+import type { ImageProps} from "react-native";
+import { Image as RNImage, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
   container: {
-    width: moderateScale(50),
-    height: moderateScale(50),
+    alignItems: "center",
+    backgroundColor: theme.colors.background,
+    borderColor: "rgba(90,90,90,0.5)",
     borderRadius: moderateScale(25),
     borderWidth: 0.5,
-    alignItems: "center",
+    height: moderateScale(50),
     justifyContent: "center",
-    borderColor: "rgba(90,90,90,0.5)",
-    backgroundColor: theme.colors.background,
+    width: moderateScale(50),
   },
 }));
 

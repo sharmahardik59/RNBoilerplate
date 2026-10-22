@@ -9,20 +9,20 @@ import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet(() => ({
   flexRow: {
-    flexDirection: "row",
     alignItems: "center",
+    flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: verticalScale(24),
   },
 
   headerStyle: {
-    flexDirection: "row",
     alignItems: "center",
+    flexDirection: "row",
     marginBottom: verticalScale(32),
   },
   textStyle: {
-    fontSize: scale(12),
     fontFamily: fontFamily.medium,
+    fontSize: scale(12),
     opacity: 0.6,
   },
 }));
@@ -38,20 +38,20 @@ const RememberMe = ({ onPressForgot }: SectionProps): React.JSX.Element => {
     <View style={styles.flexRow}>
       <Pressable
         onPress={() => setRememberMe(!rememberMe)}
-        style={{ flexDirection: "row", alignItems: "center" }}
+        style={{ alignItems: "center", flexDirection: "row" }}
       >
         <ImageContainer
+          resizeMode="contain"
           source={rememberMe ? imagePath.icCheck : imagePath.icUnchek}
           style={{
-            marginRight: moderateScale(12),
             height: moderateScale(14),
+            marginRight: moderateScale(12),
             width: moderateScale(14),
           }}
-          resizeMode="contain"
         />
         <TextContainer style={styles.textStyle} text="REMEBER_ME" />
       </Pressable>
-      <TextContainer style={styles.textStyle} onPress={onPressForgot} text="FORGOT_PASSWORD" />
+      <TextContainer onPress={onPressForgot} style={styles.textStyle} text="FORGOT_PASSWORD" />
     </View>
   );
 };

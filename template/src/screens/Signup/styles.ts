@@ -8,8 +8,8 @@ const stylesheet = createStyleSheet(() => ({
     marginHorizontal: moderateScale(16),
   },
   flexRow: {
-    flexDirection: 'row',
     alignItems: 'center',
+    flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: moderateScale(24),
   },

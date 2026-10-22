@@ -1,5 +1,5 @@
 export default {
-    USER_DATA: '@userInfo',
+    DEFAULT_LANGUAGE: "@defaultLanguage",
     DEFAULT_THEME: "@defaultTheme",
-    DEFAULT_LANGUAGE: "@defaultLanguage"
+    USER_DATA: '@userInfo'
 };

@@ -4,32 +4,33 @@ import { useNavigation } from "@react-navigation/native";
 import { moderateScale } from "@utils/scaling";
 import type { PropsWithChildren } from "react";
 import React from "react";
-import { ImageSourcePropType, Pressable, View } from "react-native";
+import type { ImageSourcePropType} from "react-native";
+import { Pressable, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet(() => ({
   headerStyle: {
-    flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
+    flexDirection: "row",
     height: moderateScale(60),
+    justifyContent: "space-between",
   },
 }));
 
 type SectionProps = PropsWithChildren<{
-  style?: object;
   leftImage?: ImageSourcePropType;
-  rightImage?: ImageSourcePropType;
   onPressLeft?: () => void;
   onPressRight?: () => void;
+  rightImage?: ImageSourcePropType;
+  style?: object;
 }>;
 
 const HeaderComp = ({
-  style,
   leftImage = imagePath.icBack,
-  rightImage = imagePath.icShare,
   onPressLeft,
   onPressRight,
+  rightImage = imagePath.icShare,
+  style,
 }: SectionProps): React.JSX.Element => {
   const navigation = useNavigation();
 

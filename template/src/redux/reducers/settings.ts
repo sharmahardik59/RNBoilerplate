@@ -1,7 +1,7 @@
-/* eslint-disable */
-
+/* eslint-disable no-console */
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import type { UnistylesThemes } from "react-native-unistyles";
 
 export interface LanguageInterface {
   name: string;
@@ -9,13 +9,13 @@ export interface LanguageInterface {
 }
 
 export interface ThemeInterface {
-  myTheme: string;
+  myTheme: keyof UnistylesThemes;
 }
 
 export interface SettingsState {
-  languages: Array<LanguageInterface>;
   defaultLanguage: LanguageInterface;
   defaultTheme: ThemeInterface;
+  languages: Array<LanguageInterface>;
 }
 
 const supportedLanguages: Array<LanguageInterface> = [
@@ -25,14 +25,14 @@ const supportedLanguages: Array<LanguageInterface> = [
 ];
 
 const initialState: SettingsState = {
-  languages: supportedLanguages,
   defaultLanguage: supportedLanguages[0],
   defaultTheme: { myTheme: "light" },
+  languages: supportedLanguages,
 };
 
 const settingSlice = createSlice({
-  name: "settings",
   initialState,
+  name: "settings",
   reducers: {
     saveDefaultLanguage: (state, action: PayloadAction<LanguageInterface>) => {
       const languageExists = state.languages.some(

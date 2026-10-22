@@ -4,15 +4,15 @@ import * as Screens from "../screens";
 
 export type HomeStackParamList = {
   Home: undefined;
-  Settings: undefined;
   PostDetails: { productId: number };
+  Settings: undefined;
 };
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
 const MainStack = () => (
   <>
-    <Stack.Screen name="Home" component={Screens.Home} />
-    <Stack.Screen name="PostDetails" component={Screens.PostDetails} />
+    <Stack.Screen component={Screens.Home} name="Home" />
+    <Stack.Screen component={Screens.PostDetails} name="PostDetails" />
   </>
 );
 

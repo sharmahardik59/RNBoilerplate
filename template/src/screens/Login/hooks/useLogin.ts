@@ -1,5 +1,6 @@
-import { AuthStackParamList } from '@navigations/AuthStack';
-import { NavigationProp, useNavigation } from '@react-navigation/native';
+import type { AuthStackParamList } from '@navigations/AuthStack';
+import type { NavigationProp} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from '@redux/hooks';
 import { hasError } from '@redux/reducers/auth';
 import { alertFunction } from '@utils/index';
@@ -17,7 +18,7 @@ const error = useSelector(state => state.auth.error);
 
 const onSignupPress = useCallback(() => {
     navigation.navigate('Signup');
-}, []);
+}, [navigation]);
 
 // Effects
     useEffect(() => {
@@ -29,7 +30,7 @@ const onSignupPress = useCallback(() => {
         }
         dispatch(hasError(new Error('')));
     }
-    }, [error]);
+    }, [dispatch, error]);
 
     return {onSignupPress};
 };

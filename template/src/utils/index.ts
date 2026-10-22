@@ -1,12 +1,12 @@
 import { Alert } from "react-native";
 
 export const alertFunction = (title: string, message: string, showCancel: boolean = false, onOkPress: () => void = () => {}, onCancelPress: () => void = () => {}) => {
-let alertOptions: { text: string; onPress: () => void; style?: 'cancel' | 'default' | 'destructive' }[] = [{text: 'OK', onPress: onOkPress}];
+const alertOptions: { onPress: () => void; style?: 'cancel' | 'default' | 'destructive'; text: string; }[] = [{onPress: onOkPress, text: 'OK'}];
 if(showCancel){
     alertOptions.unshift({
-        text: 'Cancel',
         onPress: onCancelPress,
         style: 'cancel',
+        text: 'Cancel',
       });
     }
   Alert.alert(
@@ -22,8 +22,8 @@ const customAtob = (base64: string) => {
   const base64Chars =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
   let result = "";
-  let buffer = 0,
-    bits = 0,
+  let bits = 0,
+    buffer = 0,
     pad = 0;
 
   for (let i = 0; i < base64.length; i++) {
@@ -57,7 +57,7 @@ const customAtob = (base64: string) => {
   return result;
 }
 
-export const isTokenExpired = (token: string | null) => {
+export const isTokenExpired = (token: null | string) => {
   if (!token) {
     throw new Error("Token is null or undefined");
   }

@@ -9,12 +9,21 @@ import {
 import { createStyleSheet } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
-  imageStyle: {
-    width,
-    minHeight: height / 2.5,
-    paddingHorizontal: moderateScale(28),
-    paddingBottom: verticalScale(40),
-    justifyContent: "space-between"
+  btnStyle: {
+    backgroundColor: theme.colors.white,
+    borderRadius: moderateScale(10),
+    height: moderateScale(34),
+    minWidth: moderateScale(96)
+  },
+  btnTextStyle: {
+    color: theme.colors.black,
+    fontFamily: fontFamily.medium,
+    fontSize: scale(14)
+  },
+  commentBtn: {
+    borderRadius: moderateScale(10),
+    height: moderateScale(34),
+    minWidth: moderateScale(96)
   },
   containerView: {
     borderTopLeftRadius: moderateScale(34),
@@ -22,61 +31,52 @@ const stylesheet = createStyleSheet((theme) => ({
     marginTop: verticalScale(-26),
     paddingHorizontal: moderateScale(16)
   },
-  headerLine: {
-    width: moderateScale(42),
-    height: moderateScale(2),
-    borderRadius: moderateScale(12),
-    alignSelf: "center",
-    marginVertical: verticalScale(14)
-  },
-  rectangleBox: {
-    minHeight: moderateScale(85),
-    backgroundColor: "#B3C680",
-    borderRadius: moderateScale(18),
-    paddingVertical: verticalScale(18),
-    paddingHorizontal: moderateScale(30),
-    flexDirection: "row"
-  },
-  btnStyle: {
-    height: moderateScale(34),
-    minWidth: moderateScale(96),
-    borderRadius: moderateScale(10),
-    backgroundColor: theme.colors.white
-  },
-  commentBtn: {
-    height: moderateScale(34),
-    minWidth: moderateScale(96),
-    borderRadius: moderateScale(10)
-  },
-  followUs: {
-    fontSize: scale(18),
-    fontFamily: fontFamily.semiBold,
-    color: theme.colors.white
-  },
-  btnTextStyle: {
-    color: theme.colors.black,
-    fontFamily: fontFamily.medium,
+  descTextStyle: {
+    color: theme.colors.opacity50,
     fontSize: scale(14)
   },
-
-  likeCommentView: {
-    flexDirection: "row",
+  flexView: {
     alignItems: "center",
+    flex: 0.3,
+    flexDirection: "row"
+  },
+  followUs: {
+    color: theme.colors.white,
+    fontFamily: fontFamily.semiBold,
+    fontSize: scale(18)
+  },
+  headerLine: {
+    alignSelf: "center",
+    borderRadius: moderateScale(12),
+    height: moderateScale(2),
+    marginVertical: verticalScale(14),
+    width: moderateScale(42)
+  },
+
+  headerTextStyle: {
+    fontFamily: fontFamily.semiBold,
+    fontSize: scale(20)
+  },
+  imageStyle: {
+    justifyContent: "space-between",
+    minHeight: height / 2.5,
+    paddingBottom: verticalScale(40),
+    paddingHorizontal: moderateScale(28),
+    width
+  },
+  likeCommentView: {
+    alignItems: "center",
+    flexDirection: "row",
     justifyContent: "space-between",
     marginTop: verticalScale(14)
   },
-  flexView: {
+  rectangleBox: {
+    backgroundColor: "#B3C680",
+    borderRadius: moderateScale(18),
     flexDirection: "row",
-    alignItems: "center",
-    flex: 0.3
-  },
-  headerTextStyle: {
-    fontSize: scale(20),
-    fontFamily: fontFamily.semiBold
-  },
-  descTextStyle: {
-    fontSize: scale(14),
-    color: theme.colors.opacity50
+    minHeight: moderateScale(85),
+    paddingHorizontal: moderateScale(30),
+    paddingVertical: verticalScale(18)
   }
 }));
 export default stylesheet;

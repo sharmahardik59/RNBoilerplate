@@ -13,20 +13,20 @@ i18n
   .init({
     debug: true,
     fallbackLng: "en",
-    lng: I18nManager.isRTL ? 'ar' : 'en', // Set language based on RTL
-    supportedLngs: ["en", "fr", "ar"],
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
+    lng: I18nManager.isRTL ? 'ar' : 'en', // Set language based on RTL
     resources: {
+      ar: {
+        translation: arTranslation,
+      },
       en: {
         translation: enTranslation,
       },
       fr: {
         translation: frTranslation,
       },
-      ar: {
-        translation: arTranslation,
-      },
     },
+    supportedLngs: ["en", "fr", "ar"],
   });

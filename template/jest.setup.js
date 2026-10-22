@@ -1,13 +1,30 @@
-// import 'whatwg-fetch';
-import "react-native-gesture-handler/jestSetup";
-import "@testing-library/jest-native/extend-expect";
+/* eslint-disable @typescript-eslint/no-require-imports -- require() is needed inside jest.mock factories */
+import 'react-native-gesture-handler/jestSetup';
 
-jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter');
+// react-native-worklets must be mocked before react-native-reanimated is loaded.
+// (jest.mock calls are hoisted to the top of this file by babel-plugin-jest-hoist)
+jest.mock('react-native-worklets', () => require('react-native-worklets/src/mock'));
 
-jest.mock("react-native-reanimated", () =>
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-  require("react-native-reanimated/mock"),
-);
+// react-native-reanimated runs on its in-memory mock in tests
+jest.mock('react-native-reanimated', () => require('react-native-reanimated/mock'));
 
-// Silence the warning: Animated: `useNativeDriver` is not supported because the native animated module is missing
-jest.mock("react-native/Libraries/Animated/NativeAnimatedHelper");
+// Mock MMKV storage with an in-memory implementation
+jest.mock('react-native-mmkv', () => {
+  const {createMockMMKV} = require('react-native-mmkv/lib/commonjs/createMMKV.mock');
+
+  return {
+    MMKV: jest.fn(() => createMockMMKV()),
+  };
+});
+
+jest.mock('react-native/Libraries/EventEmitter/NativeEventEmitter', () => ({
+  __esModule: true,
+  default: jest.fn().mockImplementation(() => ({
+    addListener: jest.fn(() => ({remove: jest.fn()})),
+    removeAllListeners: jest.fn(),
+    removeSubscription: jest.fn(),
+  })),
+}));
+
+// Register unistyles breakpoints/themes for component tests
+import './src/styles/unistyles';

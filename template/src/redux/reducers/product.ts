@@ -1,36 +1,37 @@
-import { HomeData, ProductsData } from "@models/HomeData";
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import type { HomeData, ProductsData } from "@models/HomeData";
+import type { PayloadAction } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 export interface ProductState {
-  productList: Array<HomeData>,
-  productDetail: ProductsData | null,
-  isLoading: boolean;
   error: Error | null;
+  isLoading: boolean;
+  productDetail: null | ProductsData,
+  productList: Array<HomeData>,
 }
 
 const initialState: ProductState = {
-  productList: [],
-  productDetail: null,
-  isLoading: false,
   error: null,
+  isLoading: false,
+  productDetail: null,
+  productList: [],
 };
 
 const productSlice = createSlice({
-  name: "auth",
   initialState,
+  name: "auth",
   reducers: {
-    setProducts: (state, action: PayloadAction<Array<HomeData>>) => {
-      state.productList = action.payload;
+    hasError: (state, action: PayloadAction<Error>) => {
+      state.error = action.payload;
     },
     setProductDetail: (state, action: PayloadAction<ProductsData>) => {
       state.productDetail = action.payload;
     },
-    hasError: (state, action: PayloadAction<Error>) => {
-      state.error = action.payload;
+    setProducts: (state, action: PayloadAction<Array<HomeData>>) => {
+      state.productList = action.payload;
     },
   },
 });
 
-export const { setProducts, setProductDetail, hasError } = productSlice.actions;
+export const { hasError, setProductDetail, setProducts } = productSlice.actions;
 
 export default productSlice.reducer;

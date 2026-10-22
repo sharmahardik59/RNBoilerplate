@@ -20,12 +20,12 @@ const Login = (): React.JSX.Element => {
         <View style={styles.container}>
           <View>
             <AuthHeader
-              title="LOG_IN_TO_YOUR_ACCOUNT"
               description="WELCOME_BACK_PLEASE_ENTER_YOUR_DETAILS"
+              title="LOG_IN_TO_YOUR_ACCOUNT"
             />
             <LoginForm />
           </View>
-          <FooterView simpleText="DONT_HAVE_ACCOUNT" linkText="SIGNUP" linkPress={onSignupPress} />
+          <FooterView linkPress={onSignupPress} linkText="SIGNUP" simpleText="DONT_HAVE_ACCOUNT" />
         </View>
       </TouchableWithoutFeedback>
     </WrapperContainer>

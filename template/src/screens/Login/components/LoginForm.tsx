@@ -7,13 +7,14 @@ import {verticalScale} from '@utils/scaling';
 import validationForm from '@utils/validationForm';
 import {Formik} from 'formik';
 import React, {Fragment, useCallback, useRef, useState} from 'react';
-import {Keyboard, TextInput} from 'react-native';
+import type {TextInputInstance} from 'react-native';
+import {Keyboard} from 'react-native';
 import {login} from 'src/services/authService';
 
 const LoginForm = (): React.JSX.Element => {
   // Reference variables
   const loginFormRef = useRef(null);
-  const passwordInputRef = useRef<TextInput>(null);
+  const passwordInputRef = useRef<null | TextInputInstance>(null);
 
   // Redux variables
   const dispatch = useDispatch();
@@ -23,53 +24,53 @@ const LoginForm = (): React.JSX.Element => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
 
   // Login button callback
-  const onLogin = useCallback(({username, password}: {username: string; password: string}) => {
-    dispatch(login({username, password}));
-  }, []);
+  const onLogin = useCallback(({password, username}: {password: string; username: string;}) => {
+    dispatch(login({password, username}));
+  }, [dispatch]);
 
   return (
     <Formik
-      innerRef={loginFormRef}
       initialValues={{
-        username: 'emilys',
         password: 'emilyspass',
+        username: 'emilys',
       }}
-      validationSchema={validationForm.login}
-      onSubmit={onLogin}>
+      innerRef={loginFormRef}
+      onSubmit={onLogin}
+      validationSchema={validationForm.login}>
       {({...params}) => {
         return (
           <Fragment>
             <CustomTextInput
-              value={params.values.username}
-              leftImage={imagePath.icUser}
-              label="USERNAME"
-              id="username"
-              placeholder="ENTER_YOUR_USERNAME"
-              autoCorrect={false}
               autoCapitalize="none"
+              autoCorrect={false}
+              error={params.touched.username ? params.errors.username : null}
+              id="username"
+              label="USERNAME"
+              leftImage={imagePath.icUser}
+              onBlur={params.handleBlur('username')}
+              onChangeText={params.handleChange('username')}
+              onSubmitEditing={() => passwordInputRef.current?.focus()}
+              placeholder="ENTER_YOUR_USERNAME"
               returnKeyType="next"
               style={{marginBottom: verticalScale(16)}}
-              error={params.touched.username ? params.errors.username : null}
-              onChangeText={params.handleChange('username')}
-              onBlur={params.handleBlur('username')}
-              onSubmitEditing={() => passwordInputRef.current?.focus()}
+              value={params.values.username}
             />
             <CustomTextInput
-              ref={passwordInputRef}
-              value={params.values.password}
-              leftImage={imagePath.icLock}
-              rightImage={secureTextEntry ? imagePath.icPassword : imagePath.icPasswordShow}
-              label="PASSWORD"
-              id="password"
-              placeholder="ENTER_YOUR_PASSWORD"
-              returnKeyType="done"
-              secureTextEntry={secureTextEntry}
-              style={{marginBottom: verticalScale(30)}}
               error={params.touched.password ? params.errors.password : null}
-              onChangeText={params.handleChange('password')}
+              id="password"
+              label="PASSWORD"
+              leftImage={imagePath.icLock}
               onBlur={params.handleBlur('password')}
+              onChangeText={params.handleChange('password')}
               onPressRight={() => setSecureTextEntry(!secureTextEntry)}
               onSubmitEditing={() => Keyboard.dismiss()}
+              placeholder="ENTER_YOUR_PASSWORD"
+              ref={passwordInputRef}
+              returnKeyType="done"
+              rightImage={secureTextEntry ? imagePath.icPassword : imagePath.icPasswordShow}
+              secureTextEntry={secureTextEntry}
+              style={{marginBottom: verticalScale(30)}}
+              value={params.values.password}
             />
             <RememberMe onPressForgot={() => alertFunction('Password', 'Forgot Password')} />
             <ButtonContainer

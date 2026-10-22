@@ -6,20 +6,20 @@ import { createStyleSheet, useStyles } from 'react-native-unistyles';
 
 const stylesheet = createStyleSheet(theme => ({
   container: {
-    flex: 1,
     backgroundColor: theme.colors.background,
+    flex: 1,
   },
 }));
 
 type SectionProps = PropsWithChildren<{
-  style?: object;
   isSafeAreaView?: boolean;
+  style?: object;
 }>;
 
 const WrapperContainer = ({
   children,
-  style,
   isSafeAreaView = true,
+  style,
 }: SectionProps): React.JSX.Element => {
   const {styles} = useStyles(stylesheet);
   const {theme} = useStyles();

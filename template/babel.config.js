@@ -1,9 +1,20 @@
 module.exports = {
-  presets: ['module:@react-native/babel-preset'],
   plugins: [
     [
       'module-resolver',
       {
+        alias: {
+          '@api': './src/api',
+          '@assets': './src/assets',
+          '@components': './src/components',
+          '@constants': './src/constants',
+          '@hooks': './src/hooks',
+          '@models': './src/models',
+          '@navigations': './src/navigations',
+          '@redux': './src/redux',
+          '@screens': './src/screens',
+          '@utils': './src/utils',
+        },
         extensions: [
           '.ios.js',
           '.android.js',
@@ -16,20 +27,7 @@ module.exports = {
           '.tsx',
         ],
         root: ['.'],
-        alias: {
-          '@api': './src/api',
-          '@assets': './src/assets',
-          '@components': './src/components',
-          '@screens': './src/screens',
-          '@utils': './src/utils',
-          '@redux': './src/redux',
-          '@constants': './src/constants',
-          '@navigations': './src/navigations',
-          '@hooks': './src/hooks',
-          '@models': './src/models',
-        },
       },
-      'react-native-worklets/plugin',
     ],
     [
       'module:react-native-dotenv',
@@ -38,5 +36,8 @@ module.exports = {
         path: '.env',
       },
     ],
+    // NOTE: react-native-worklets/plugin must be listed last.
+    'react-native-worklets/plugin',
   ],
+  presets: ['module:@react-native/babel-preset'],
 };

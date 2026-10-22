@@ -20,11 +20,11 @@ function Signup(): React.JSX.Element {
     <WrapperContainer>
       <KeyboardAwareScrollView>
         <View style={styles.container}>
-          <AuthHeader title="CREATE_AN_ACCOUNT" description="WELCOME_PLEASE_ENTER_YOUR_DETAILS" />
+          <AuthHeader description="WELCOME_PLEASE_ENTER_YOUR_DETAILS" title="CREATE_AN_ACCOUNT" />
           <SignupForm />
         </View>
       </KeyboardAwareScrollView>
-      <FooterView simpleText="ALREADY_HAVE_ACCOUNT" linkText="LOGIN" linkPress={onGoBack} />
+      <FooterView linkPress={onGoBack} linkText="LOGIN" simpleText="ALREADY_HAVE_ACCOUNT" />
     </WrapperContainer>
   );
 }

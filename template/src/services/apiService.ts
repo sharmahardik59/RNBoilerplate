@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable @typescript-eslint/no-explicit-any, no-console */
 import API_CONSTANT, { BASE_URL } from "@constants/apiConstant";
 import storageKeys from "@constants/storageKeys";
 import type { ExtendedApiErrorResponse } from "@models/ApiErrorResponse";
@@ -18,10 +18,10 @@ interface PostOptions {
 const api = axios.create({
   baseURL: BASE_URL, // Replace with your API base URL,
   headers: {
-    'Content-Type': 'application/json',
     Accept: 'Application/json',
+    'Content-Type': 'application/json',
   },
-  timeout: 10000 // Set a timeout for requests (in milliseconds)
+  timeout: 10_000 // Set a timeout for requests (in milliseconds)
 });
 
 const handleApiError = (error: ExtendedApiErrorResponse) => {
@@ -59,9 +59,9 @@ const handleApiError = (error: ExtendedApiErrorResponse) => {
 api.interceptors.request.use(async config => {
   // Add the Authorization header if a token is present
   const userData = getItem(storageKeys.USER_DATA);
-  var token = userData?.accessToken;
+  let token = userData?.accessToken;
   if (userData) {
-      let isExpired = isTokenExpired(token || null);
+      const isExpired = isTokenExpired(token || null);
       console.log("isExpired.....", isExpired);
       if (
         isExpired &&
@@ -125,11 +125,11 @@ export const setItem = (key: LocalStorage, value: any) => {
   storage.set(key, JSON.stringify(value));
 };
 
-export const getItem = (key: LocalStorage): User | null  => {
+export const getItem = <T = User>(key: LocalStorage): null | T  => {
   const jsonUser = storage.getString(key);
   if (jsonUser) {
     try {
-      const userObject: User = JSON.parse(jsonUser);
+      const userObject = JSON.parse(jsonUser) as T;
       return userObject;
     } catch (error) {
       console.log("Error parsing user data:", error);

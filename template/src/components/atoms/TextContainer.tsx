@@ -2,27 +2,28 @@ import fontFamily from "@constants/fontFamily";
 import { scale } from "@utils/scaling";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Text, TextProps } from "react-native";
+import type { TextProps } from "react-native";
+import { Text } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet((theme) => ({
   sectionTitle: {
-    fontSize: scale(14),
-    fontFamily: fontFamily.regular,
     color: theme.colors.typography,
+    fontFamily: fontFamily.regular,
+    fontSize: scale(14),
   },
 }));
 
 interface TextContainterProps extends TextProps {
-  text: string | "";
-  style?: object;
   isDynamicText?: boolean;
+  style?: object;
+  text: "" | string;
 }
 
 const TextContainer: React.FC<TextContainterProps> = ({
-  text,
   isDynamicText = false,
   style,
+  text,
   ...rest
 }) => {
   const { t } = useTranslation();

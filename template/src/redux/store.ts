@@ -1,10 +1,11 @@
-/* eslint-disable */
-import { Action, ThunkAction, configureStore } from "@reduxjs/toolkit";
+
+import type { Action, ThunkAction} from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import reducer from "./reducers";
 
 const store = configureStore({
-  reducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: false }),
+  reducer,
 });
 export default store;
 

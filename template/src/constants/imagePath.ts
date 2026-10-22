@@ -1,26 +1,25 @@
-/* eslint-disable */
-
+/* eslint-disable @typescript-eslint/no-require-imports -- require() is the idiomatic way to load static image assets in React Native */
 export default {
-  icLightOct: require("@assets/images/oct_light.png"),
+  icBack: require("@assets/images/icBack.png"),
+  icCheck: require("@assets/images/check.png"),
+  icClose: require("@assets/images/icClose.png"),
+  icComment: require("@assets/images/icComment.png"),
   icDarkOct: require("@assets/images/oct_dark.png"),
   icEmail: require("@assets/images/email.png"),
+  icLightOct: require("@assets/images/oct_light.png"),
+  icLike: require("@assets/images/icLike.png"),
   icLine: require("@assets/images/line.png"),
   icLock: require("@assets/images/lock.png"),
-  icPassword: require("@assets/images/password_hide.png"),
-  icPasswordShow: require("@assets/images/password_show.png"),
-  icStar: require("@assets/images/star.png"),
-  icUser: require("@assets/images/user.png"),
-  icCheck: require("@assets/images/check.png"),
-  icUnchek: require("@assets/images/uncheck.png"),
-  icRightArrow: require("@assets/images/right_arrow.png"),
-  icOnboard: require("@assets/images/onboard.png"),
-
-  icSetting: require("@assets/images/icSetting.png"),
-  icClose: require("@assets/images/icClose.png"),
-  icBack: require("@assets/images/icBack.png"),
-  icComment: require("@assets/images/icComment.png"),
-  icShare: require("@assets/images/icShare.png"),
-  icLike: require("@assets/images/icLike.png"),
   icNotification: require("@assets/images/notification.png"),
+  icOnboard: require("@assets/images/onboard.png"),
+  icPassword: require("@assets/images/password_hide.png"),
+
+  icPasswordShow: require("@assets/images/password_show.png"),
+  icRightArrow: require("@assets/images/right_arrow.png"),
   icSearch: require("@assets/images/icSearch.png"),
+  icSetting: require("@assets/images/icSetting.png"),
+  icShare: require("@assets/images/icShare.png"),
+  icStar: require("@assets/images/star.png"),
+  icUnchek: require("@assets/images/uncheck.png"),
+  icUser: require("@assets/images/user.png"),
 };

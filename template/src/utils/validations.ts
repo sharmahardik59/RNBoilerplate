@@ -1,14 +1,14 @@
-/* eslint-disable */
+
 
 const emptyRegex: RegExp = /^$/;
-const emailRegex: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const emailRegex: RegExp = /^[\w%+.-]+@[\d.A-Za-z-]+\.[A-Za-z]{2,}$/;
 
 const validator = {
-    empty: (val: string): boolean => {
-        return emptyRegex.test(val.trim());
-    },
     email: (val: string): boolean => {
         return emailRegex.test(val.trim());
+    },
+    empty: (val: string): boolean => {
+        return emptyRegex.test(val.trim());
     }
 };
 
@@ -26,12 +26,12 @@ const checkMinLength = (val: string, minLength: number, key: string): string => 
     return '';
 };
 
-export default function validate(data: { [key: string]: string }): string | boolean {
+export default function validate(data: { [key: string]: string }): boolean | string {
     const { 
-        name,
-        email, 
-        password,
-        otp
+        email,
+        name, 
+        otp,
+        password
     } = data;
 
     if (name !== undefined) {

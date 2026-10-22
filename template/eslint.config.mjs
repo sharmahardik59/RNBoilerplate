@@ -151,10 +151,14 @@ export default [
       '@typescript-eslint/no-var-requires': 0,
       'import/no-unresolved': 0, // handled by TypeScript
       'react/prop-types': 0,
+      'react/require-default-props': 0, // TS types + default parameters cover this
     },
   },
   {
-    files: ['./**/*.test.{ts,tsx}'],
+    files: ['./**/*.test.{ts,tsx}', 'jest.setup.js'],
+    languageOptions: {
+      globals: jest.environments.globals.globals,
+    },
     plugins: {
       'testing-library': testingLibrary,
     },
@@ -166,6 +170,6 @@ export default [
     },
   },
   {
-    ignores: ['metro.config.js'],
+    ignores: ['metro.config.js', 'plugins/'],
   },
 ];

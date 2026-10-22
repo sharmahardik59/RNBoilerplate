@@ -4,43 +4,44 @@ import imagePath from "@constants/imagePath";
 import { moderateScale, scale, verticalScale } from "@utils/scaling";
 import React from "react";
 import type { PropsWithChildren } from "react";
-import { Image, Pressable, View, ViewStyle } from "react-native";
+import type { ViewStyle } from "react-native";
+import { Image, Pressable, View } from "react-native";
 import { createStyleSheet, useStyles } from "react-native-unistyles";
 
 const stylesheet = createStyleSheet(() => ({
-  headerStyle: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    height: moderateScale(60),
-  },
-  titleStyle: {
-    fontSize: scale(24),
-    lineHeight: scale(27),
-    fontFamily: fontFamily.semiBold,
-  },
   descStyle: {
+    fontFamily: fontFamily.regular,
     fontSize: scale(14),
     lineHeight: scale(27),
+    marginBottom: verticalScale(24),
     marginTop: verticalScale(8),
     opacity: 0.5,
-    marginBottom: verticalScale(24),
-    fontFamily: fontFamily.regular,
+  },
+  headerStyle: {
+    alignItems: "center",
+    flexDirection: "row",
+    height: moderateScale(60),
+    justifyContent: "space-between",
   },
   profileImage: {
+    borderRadius: moderateScale(25),
     height: moderateScale(50),
     width: moderateScale(50),
-    borderRadius: moderateScale(25),
+  },
+  titleStyle: {
+    fontFamily: fontFamily.semiBold,
+    fontSize: scale(24),
+    lineHeight: scale(27),
   },
 }));
 
 type SectionProps = PropsWithChildren<{
-  title?: string;
-  style?: ViewStyle;
   onPress?: () => void;
+  style?: ViewStyle;
+  title?: string;
 }>;
 
-const HeaderComp = ({ title, onPress, style }: SectionProps): React.JSX.Element => {
+const HeaderComp = ({ onPress, style, title }: SectionProps): React.JSX.Element => {
   const { styles } = useStyles(stylesheet);
   return (
     <View key="header" style={{ ...styles.headerStyle, ...style }}>
