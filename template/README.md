@@ -1,103 +1,101 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+This project was created with [**new-react-native-boilerplate**](https://www.npmjs.com/package/new-react-native-boilerplate), a [React Native](https://reactnative.dev) starter with navigation, Redux Toolkit, theming and localization already set up.
+
+> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before you continue.
 
 # Getting Started
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## Step 1: Install dependencies
 
-### For getting console logs in Metro builder
-
-```bash
-yarn start-logs
-```
-
-## Step 1: Start Metro
-
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
-
-To start the Metro dev server, run the following command from the root of your React Native project:
+The setup wizard already ran this for you. Run it again after you clone the project or change dependencies:
 
 ```sh
-# Using npm
-npm start
+yarn
+yarn asset          # link fonts and images
+bundle install      # install CocoaPods through Bundler (first time only)
+yarn podinstall     # install iOS pods (after native dependency changes)
+```
 
-# OR using Yarn
+## Step 2: Check the `.env` file
+
+The wizard creates a `.env` file at the project root. Update the values for your API:
+
+```dotenv
+ENV=DEV
+BASE_API_URL=https://dummyjson.com
+IMAGE_URL=https://dev-tn-file-server.s3.ap-south-1.amazonaws.com
+```
+
+## Step 3: Start Metro
+
+```sh
 yarn start
 ```
 
-## Step 2: Build and run your app
+To see app console logs in the Metro terminal, use this instead:
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+```sh
+yarn start-logs
+```
+
+## Step 4: Build and run your app
+
+Keep Metro running, open a new terminal in the project root, and run one of these:
 
 ### Android
 
 ```sh
-# Using npm
-npm run android
-
-# OR using Yarn
 yarn android
 ```
 
 ### iOS
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
-
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
-
 ```sh
-bundle install
-```
-
-Then, and every time you update your native dependencies, run:
-
-```sh
-bundle exec pod install
-```
-
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
-
-```sh
-# Using npm
-npm run ios
-
-# OR using Yarn
 yarn ios
+
+# or on a specific simulator
+yarn ios --simulator="iPhone 16 Pro"
 ```
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+If everything is set up correctly, your app opens in the Android Emulator, the iOS Simulator, or on your connected device. You can also build it directly from Android Studio or Xcode.
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Step 5: Modify your app
 
-## Step 3: Modify your app
+Open `src/App.tsx` or any screen in `src/screens/` and make a change. When you save, the app updates automatically through [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
 
-Now that you have successfully run the app, let's make changes!
+To force a full reload, for example to reset the app's state:
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+- **Android**: press <kbd>R</kbd> twice, or choose **"Reload"** from the **Dev Menu**. Open it with <kbd>Ctrl</kbd> + <kbd>M</kbd> on Windows and Linux, or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> on macOS.
+- **iOS**: press <kbd>R</kbd> in the iOS Simulator.
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+# Available Scripts
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+| Script | Description |
+| --- | --- |
+| `yarn start` | Start Metro with a cleared cache |
+| `yarn start-logs` | Start Metro and stream app console logs |
+| `yarn android` | Build and run the Android app |
+| `yarn ios` | Build and run the iOS app |
+| `yarn podinstall` | Install iOS CocoaPods through Bundler |
+| `yarn asset` | Link fonts and assets |
+| `yarn test` | Run the Jest test suite |
+| `yarn test:report` | Run tests with coverage and a JUnit report |
+| `yarn lint` | Lint `.ts` and `.tsx` files |
+| `yarn tsc` | Type-check the project |
+| `yarn precommit` | Run the type check and lint in parallel |
+| `yarn android-bundle-release` | Build an Android release bundle |
+| `yarn android-run-release` | Run the Android release variant |
 
 # Troubleshooting
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+- **Pods fail to install:** run `cd ios && bundle exec pod install --repo-update && cd ..`
+- **`gradlew: Permission denied`:** run `chmod 755 android/gradlew`
+- **Stale code or `.env` values:** restart Metro with `yarn start`, which already clears the cache.
+- **Fonts or images missing:** run `yarn asset`, then rebuild the app.
+
+For anything else, see the React Native [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page or [open an issue](https://github.com/sharmahardik59/RNBoilerplate/issues).
 
 # Learn More
 
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- [new-react-native-boilerplate on GitHub](https://github.com/sharmahardik59/RNBoilerplate): source code, docs and issues.
+- [React Native website](https://reactnative.dev): learn more about React Native.
+- [Learn the Basics](https://reactnative.dev/docs/getting-started): a guided tour of React Native.

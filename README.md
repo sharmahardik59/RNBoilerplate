@@ -67,6 +67,21 @@ Create a new project with one command:
 npx new-react-native-boilerplate
 ```
 
+To make sure you get the newest version instead of a cached one:
+
+```bash
+npx new-react-native-boilerplate@latest
+```
+
+Or install the CLI globally and run it from anywhere:
+
+```bash
+npm install -g new-react-native-boilerplate
+new-react-native-boilerplate
+```
+
+> **Moving from `@hardik59/rn-boilerplate`?** That package is deprecated. Use `npx new-react-native-boilerplate` instead. The template and setup steps are the same.
+
 The interactive wizard asks for two things:
 
 1. **Project name**, for example `MyAwesomeApp`
